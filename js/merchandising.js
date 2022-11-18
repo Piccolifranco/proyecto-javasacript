@@ -64,6 +64,15 @@ const mostrarProductos = () => {
     const boton = document.getElementById(`boton${producto.id}`);
     boton.addEventListener("click", () => {
       agregarAlCarrito(producto.id);
+      Toastify({
+        text: "Producto agregado al carrito, gracias por apoyar a 2G-esports!",
+        duration: 2000,
+        gravity: "bottom",
+        position: "right",
+        style: {
+          background: "linear-gradient(to right, #C21616, #453131)",
+        },
+      }).showToast();
     });
   });
 };
@@ -71,15 +80,11 @@ const mostrarProductos = () => {
 const agregarAlCarrito = (id) => {
   const producto = arrayProductos.find((producto) => producto.id === id);
   const productoEnCarrito = carrito.find((producto) => producto.id === id);
-  if (productoEnCarrito) {
-    productoEnCarrito.cantidad++;
-  } else {
-    carrito.push(producto);
+  productoEnCarrito ? productoEnCarrito.cantidad++ : carrito.push(producto),
     localStorage.setItem("carrito", JSON.stringify(carrito));
-  }
+
   mostrarCarrito();
 };
-
 mostrarProductos();
 
 const contenedorCarrito = document.getElementById("contenedorCarrito");
@@ -125,7 +130,26 @@ const eliminarDelCarrito = (id) => {
 
 const vaciarCarrito = document.getElementById("vaciarCarrito");
 vaciarCarrito.addEventListener("click", () => {
-  eliminarTodoElCarrito();
+  Swal.fire({
+    title: "Estas seguro de que queres vaciar tu carrito?",
+    icon: "question",
+    iconColor: "red",
+    confirmButtonText: "Vaciar",
+    showCancelButton: true,
+    cancelButtonText: "Seguir comprando!",
+    confirmButtonColor: "#3f1e1e",
+    cancelButtonColor: "#3f1e1e",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      eliminarTodoElCarrito();
+      Swal.fire({
+        title: "Tu carrito esta vacio",
+        icon: "success",
+        confirmButtonText: "aceptar",
+        confirmButtonColor: "#3f1e1e",
+      });
+    }
+  });
 });
 
 const eliminarTodoElCarrito = () => {
