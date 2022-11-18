@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "nombre": "remera logo 2G",
+    "precio": 3500,
+    "img": "../images/remeralogo.jpg"
+  },
+  {
+    "id": 2,
+    "nombre": "remera logo 2G",
+    "precio": 3500,
+    "img": "../images/remeralogo.jpg"
+  },
+  {
+    "id": 3,
+    "nombre": "remera logo 2G",
+    "precio": 3500,
+    "img": "../images/remeralogo.jpg"
+  },
+  {
+    "id": 4,
+    "nombre": "remera logo 2G",
+    "precio": 3500,
+    "img": "../images/remeralogo.jpg"
+  },
+  {
+    "id": 5,
+    "nombre": "remera logo 2G",
+    "precio": 3500,
+    "img": "../images/remeralogo.jpg"
+  },
+  {
+    "id": 6,
+    "nombre": "remera logo 2G",
+    "precio": 3500,
+    "img": "../images/remeralogo.jpg"
+  }
+]
